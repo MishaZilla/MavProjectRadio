@@ -3,14 +3,27 @@ package org.junit.jupiter.api;
 public class Radio {
 
     private int numberCurrentRadioStation;
-    private int soundVolume;
-    private int decreaseVolume;
+    private int currentSoundVolumeLevel;
 
-    public int getNextStation() {
+    public int getNumberCurrentRadioStation() {
         return numberCurrentRadioStation;
     }
 
-    public void setNextStation(int newNumberRadioStation) {
+    public void setNumberCurrentRadioStation(int currentNumber) {
+        if (currentNumber < 0) {
+            return;
+        }
+        if (currentNumber > 9) {
+            return;
+        }
+        numberCurrentRadioStation = currentNumber;
+    }
+
+    public int nextStation() {
+        return numberCurrentRadioStation;
+    }
+
+    public void next(int newNumberRadioStation) {
         if (newNumberRadioStation >= 9) {
             return;
         } else {
@@ -19,11 +32,11 @@ public class Radio {
         numberCurrentRadioStation = newNumberRadioStation;
     }
 
-    public int getPrevStation() {
+    public int prevStation() {
         return numberCurrentRadioStation;
     }
 
-    public void setPrevStation(int newNumberRadioStation) {
+    public void prev(int newNumberRadioStation) {
         if (newNumberRadioStation <= 0) {
             newNumberRadioStation = 9;
         } else {
@@ -32,25 +45,39 @@ public class Radio {
         numberCurrentRadioStation = newNumberRadioStation;
     }
 
-    public int getSoundVolume() {
-        return soundVolume;
+    public int getCurrentSoundLevel() {
+        return currentSoundVolumeLevel;
+    }
+
+    public void setCurrentSoundLevel(int currentSound) {
+        if (currentSound <= 0) {
+            return;
+        }
+        if (currentSound >= 100) {
+            return;
+        }
+        currentSoundVolumeLevel = currentSound;
+    }
+
+    public int getCurrentSoundVolumeLevel() {
+        return currentSoundVolumeLevel;
     }
 
     public void setIncreaseVolume(int newSoundVolume) {
         if (newSoundVolume < 100) {
             newSoundVolume = newSoundVolume + 1;
         }
-        soundVolume = newSoundVolume;
+        currentSoundVolumeLevel = newSoundVolume;
     }
 
     public int getReduceVolume() {
-        return decreaseVolume;
+        return currentSoundVolumeLevel;
     }
 
     public void setReduceVolume(int newDecreaseVolume) {
         if (newDecreaseVolume > 0) {
             newDecreaseVolume = newDecreaseVolume - 1;
         }
-        decreaseVolume = newDecreaseVolume;
+        currentSoundVolumeLevel = newDecreaseVolume;
     }
 }
