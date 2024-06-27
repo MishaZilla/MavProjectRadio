@@ -52,8 +52,7 @@ public class Radio {
     public void increaseVolume() {
         if (currentSoundVolumeLevel < 100) {
             currentSoundVolumeLevel = currentSoundVolumeLevel + 1;
-        }
-        else {
+        } else {
             currentSoundVolumeLevel = 100;
         }
     }
@@ -61,8 +60,7 @@ public class Radio {
     public void reduceVolume() {
         if (currentSoundVolumeLevel > 0) {
             currentSoundVolumeLevel = currentSoundVolumeLevel - 1;
-        }
-        else {
+        } else {
             currentSoundVolumeLevel = 0;
         }
     }
