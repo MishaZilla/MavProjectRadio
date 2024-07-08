@@ -3,23 +3,35 @@ public class Radio {
 
     private int numberCurrentRadioStation;
     private int currentSoundVolumeLevel;
+    private int totalRadioStations = 10;
+
+    public Radio(int totalRadioStations) {
+        this.totalRadioStations = totalRadioStations;
+    }
+
+    public Radio() {
+    }
 
     public int getNumberCurrentRadioStation() {
         return numberCurrentRadioStation;
+    }
+
+    public int getTotalRadioStations() {
+        return totalRadioStations;
     }
 
     public void setNumberCurrentRadioStation(int currentNumber) {
         if (currentNumber < 0) {
             return;
         }
-        if (currentNumber > 9) {
+        if (currentNumber > totalRadioStations) {
             return;
         }
         numberCurrentRadioStation = currentNumber;
     }
 
     public void nextStation() {
-        if (numberCurrentRadioStation < 9) {
+        if (numberCurrentRadioStation < totalRadioStations-1) {
             numberCurrentRadioStation = numberCurrentRadioStation + 1;
         } else {
             numberCurrentRadioStation = 0;
@@ -30,7 +42,7 @@ public class Radio {
         if (numberCurrentRadioStation > 0) {
             numberCurrentRadioStation = numberCurrentRadioStation - 1;
         } else {
-            numberCurrentRadioStation = 9;
+            numberCurrentRadioStation = totalRadioStations - 1;
         }
     }
 

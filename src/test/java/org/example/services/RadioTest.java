@@ -4,9 +4,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+    @Test
+    public void test1() {
+        Radio rad = new Radio(16);
+
+        Assertions.assertEquals(16, rad.getTotalRadioStations());
+    }
+
+    @Test
+    public void test2() {
+        Radio rad = new Radio();
+
+        Assertions.assertEquals(10, rad.getTotalRadioStations());
+    }
+
     @Test
     public void currentStation() {
-        Radio rad = new Radio();
+        Radio rad = new Radio ();
 
         rad.setNumberCurrentRadioStation(4);
 
@@ -42,13 +57,13 @@ public class RadioTest {
 
     @Test
     public void buttonNext() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(18);
 
-        rad.setNumberCurrentRadioStation(7);
+        rad.setNumberCurrentRadioStation(13);
 
         rad.nextStation();
 
-        int expected = 8;
+        int expected = 14;
         int actual = rad.getNumberCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
